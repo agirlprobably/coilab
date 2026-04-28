@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coilab Beauty — Your Best Hair Era Starts Here</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700;1,900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --peach:#FFCBA4;
+  --blush:#F7A8C4;
+  --mint:#A8E6CF;
+  --sky:#B8E4FF;
+  --lemon:#FFF3A0;
+  --plum:#C49BCB;
+  --dark:#1C1014;
+  --cream:#FFF9F4;
+  --text:#2D1B22;
+  --muted:#7A5F6A;
+  --pink:#D4608A;
+  --teal:#2AA08A;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 60px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,249,244,0.94);
+  backdrop-filter:blur(14px);
+  border-bottom:1.5px dashed #F0D0C0;
+  transition:box-shadow 0.3s;
+}
+.nav-logo{font-family:'Fraunces',serif;font-size:24px;font-weight:900;color:var(--dark);letter-spacing:-0.02em;text-decoration:none}
+.nav-logo span{color:var(--pink)}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--dark)}
+.nav-cta{
+  background:var(--dark);color:var(--cream);
+  font-size:13px;font-weight:700;
+  padding:12px 26px;border-radius:100px;
+  text-decoration:none;letter-spacing:0.04em;
+  transition:transform 0.2s,background 0.2s;
+}
+.nav-cta:hover{background:var(--pink);transform:scale(1.04)}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;padding:120px 60px 80px;
+  overflow:hidden;
+  background:linear-gradient(160deg,#FFF9F4 0%,#FFE8F0 45%,#E8F8FF 100%);
+}
+.hero-bg-curl{
+  position:absolute;font-size:200px;opacity:0.06;
+  pointer-events:none;animation:floatCurl 7s ease-in-out infinite;
+  user-select:none;
+}
+.hero-bg-curl:nth-child(1){top:-50px;left:-60px;animation-delay:0s}
+.hero-bg-curl:nth-child(2){top:15%;right:-50px;animation-delay:1.8s;font-size:150px}
+.hero-bg-curl:nth-child(3){bottom:8%;left:8%;animation-delay:3.5s;font-size:110px}
+.hero-bg-curl:nth-child(4){bottom:18%;right:12%;animation-delay:2.2s;font-size:170px}
+@keyframes floatCurl{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-22px) rotate(6deg)}
+}
+
+/* floating product blobs */
+.blob-float{position:absolute;pointer-events:none;z-index:1}
+.blob{
+  border-radius:40% 60% 60% 40% / 50% 40% 60% 50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:32px;
+  animation:morphBlob 9s ease-in-out infinite, floatCurl 6s ease-in-out infinite;
+}
+.blob-a{width:88px;height:88px;background:var(--lemon);top:22%;left:6%;animation-delay:0s,0.5s}
+.blob-b{width:80px;height:80px;background:var(--mint);top:58%;right:5%;animation-delay:2s,1s}
+.blob-c{width:68px;height:68px;background:var(--blush);bottom:14%;left:22%;animation-delay:4s,2s}
+@keyframes morphBlob{
+  0%,100%{border-radius:40% 60% 60% 40% / 50% 40% 60% 50%}
+  33%{border-radius:60% 40% 30% 70% / 50% 60% 40% 50%}
+  66%{border-radius:30% 70% 70% 30% / 40% 60% 40% 60%}
+}
+
+.hero-inner{position:relative;z-index:2;text-align:center;max-width:780px;margin:0 auto}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:white;border:1.5px solid #F0D0C0;
+  border-radius:100px;padding:8px 20px;
+  font-size:12px;font-weight:700;color:var(--muted);
+  letter-spacing:0.1em;text-transform:uppercase;
+  margin-bottom:30px;
+  opacity:0;transform:translateY(18px);
+  animation:slideUp 0.6s ease forwards 0.2s;
+}
+.badge-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--mint);
+  animation:pulseDot 2s ease-in-out infinite;
+}
+@keyframes pulseDot{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:0.5;transform:scale(1.4)}
+}
+@keyframes slideUp{to{opacity:1;transform:translateY(0)}}
+
+h1.hero-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(54px,9vw,96px);
+  font-weight:900;line-height:0.93;letter-spacing:-0.035em;
+  color:var(--dark);margin-bottom:8px;
+}
+h1.hero-title .w1{
+  display:block;opacity:0;transform:translateY(28px);
+  animation:slideUp 0.65s ease forwards 0.4s;
+}
+h1.hero-title .w2{
+  display:block;font-style:italic;color:var(--pink);
+  opacity:0;transform:translateY(28px);
+  animation:slideUp 0.65s ease forwards 0.6s;
+}
+h1.hero-title .w3{
+  display:block;color:var(--teal);
+  opacity:0;transform:translateY(28px);
+  animation:slideUp 0.65s ease forwards 0.8s;
+}
+
+.hero-sub{
+  font-size:18px;color:var(--muted);line-height:1.65;
+  max-width:500px;margin:26px auto 40px;
+  opacity:0;transform:translateY(18px);
+  animation:slideUp 0.6s ease forwards 1.0s;
+}
+
+.hero-btns{
+  display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+  opacity:0;transform:translateY(18px);
+  animation:slideUp 0.6s ease forwards 1.2s;
+}
+.btn-primary{
+  background:var(--dark);color:white;
+  padding:16px 36px;border-radius:100px;
+  font-size:15px;font-weight:700;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:transform 0.22s,box-shadow 0.22s;
+}
+.btn-primary:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(28,16,20,0.22)}
+.btn-secondary{
+  background:white;color:var(--dark);
+  padding:16px 36px;border-radius:100px;
+  font-size:15px;font-weight:700;text-decoration:none;
+  border:2px solid #F0D0C0;
+  transition:transform 0.22s,border-color 0.22s;
+}
+.btn-secondary:hover{transform:translateY(-4px);border-color:var(--pink)}
+
+.hair-types{
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+  margin-top:56px;
+  opacity:0;transform:translateY(18px);
+  animation:slideUp 0.6s ease forwards 1.4s;
+}
+.hair-pill{
+  background:white;border:1.5px solid #F0D0C0;border-radius:100px;
+  padding:10px 20px;font-size:13px;font-weight:600;color:var(--muted);
+  display:flex;align-items:center;gap:9px;
+  transition:transform 0.2s,background 0.2s,border-color 0.2s,color 0.2s;
+  cursor:default;
+}
+.hair-pill:hover{transform:scale(1.07);background:var(--blush);border-color:var(--blush);color:var(--dark)}
+.hair-swatch{width:14px;height:14px;border-radius:50%;flex-shrink:0}
+
+/* ─── MARQUEE ─── */
+.marquee-band{
+  background:var(--dark);padding:18px 0;
+  overflow:hidden;
+}
+.marquee-track{
+  display:flex;width:max-content;
+  animation:marqueeScroll 32s linear infinite;
+}
+@keyframes marqueeScroll{to{transform:translateX(-50%)}}
+.m-item{
+  display:flex;align-items:center;gap:14px;
+  padding:0 30px;
+  font-family:'Fraunces',serif;font-size:20px;font-weight:700;
+  color:white;white-space:nowrap;
+}
+.m-star{color:var(--lemon);font-size:14px}
+
+/* ─── SHARED SECTION ─── */
+section{padding:110px 60px}
+.eyebrow{
+  font-size:11px;font-weight:700;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:14px;
+}
+h2.stitle{
+  font-family:'Fraunces',serif;
+  font-size:clamp(38px,5vw,58px);font-weight:900;
+  line-height:0.97;letter-spacing:-0.03em;color:var(--dark);
+  margin-bottom:18px;
+}
+h2.stitle em{font-style:italic;color:var(--pink)}
+
+/* ─── ABOUT ─── */
+.about-section{background:white}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:72px;align-items:center;max-width:1100px;margin:0 auto;
+}
+.about-visual{position:relative;height:480px}
+.about-blob{
+  width:100%;height:100%;
+  border-radius:60% 40% 50% 50% / 50% 60% 40% 50%;
+  background:linear-gradient(135deg,var(--peach),var(--blush));
+  display:flex;align-items:center;justify-content:center;
+  font-size:130px;
+  animation:morphBlob 12s ease-in-out infinite;
+}
+.stat-chip{
+  position:absolute;background:white;
+  border:1.5px solid #F0D0C0;border-radius:18px;
+  padding:16px 22px;
+  box-shadow:0 10px 28px rgba(0,0,0,0.09);
+}
+.chip-top{top:24px;right:-24px}
+.chip-btm{bottom:48px;left:-24px}
+.chip-num{font-family:'Fraunces',serif;font-size:32px;font-weight:900;color:var(--dark);line-height:1}
+.chip-lbl{font-size:12px;color:var(--muted);margin-top:3px;font-weight:600;letter-spacing:0.04em}
+.about-text p{font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:18px}
+.about-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.a-pill{
+  background:var(--cream);border:1.5px solid #F0D0C0;
+  border-radius:100px;padding:9px 20px;
+  font-size:13px;font-weight:600;color:var(--dark);
+}
+
+/* ─── SERVICES ─── */
+.services-section{background:var(--cream)}
+.services-head{text-align:center;margin-bottom:64px}
+.services-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:22px;max-width:1100px;margin:0 auto;
+}
+.svc-card{
+  border-radius:28px;padding:42px 34px;
+  position:relative;overflow:hidden;
+  transition:transform 0.3s;
+}
+.svc-card:hover{transform:translateY(-10px)}
+.svc-card.sc1{background:linear-gradient(135deg,#FFE4EC,#FFCBA4)}
+.svc-card.sc2{background:linear-gradient(135deg,#CFFAE8,#A8E6CF)}
+.svc-card.sc3{background:linear-gradient(135deg,#E8EFFF,#B8D8FF)}
+.svc-card.sc4{background:linear-gradient(135deg,#F3E8FF,#DDB8F0)}
+.svc-icon{font-size:46px;margin-bottom:22px;display:block}
+.svc-card h3{
+  font-family:'Fraunces',serif;font-size:26px;font-weight:900;
+  color:var(--dark);margin-bottom:12px;line-height:1.05;
+}
+.svc-card p{font-size:14px;color:var(--muted);line-height:1.65}
+.svc-tag{
+  position:absolute;top:22px;right:22px;
+  background:rgba(255,255,255,0.72);
+  backdrop-filter:blur(6px);
+  border-radius:100px;padding:5px 14px;
+  font-size:11px;font-weight:700;color:var(--dark);
+  letter-spacing:0.06em;
+}
+
+/* ─── SHOP ─── */
+.shop-section{background:white}
+.shop-head{text-align:center;margin-bottom:52px}
+.filter-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:52px}
+.f-btn{
+  border:1.5px solid #F0D0C0;background:white;
+  border-radius:100px;padding:10px 24px;
+  font-size:13px;font-weight:700;color:var(--muted);
+  cursor:pointer;transition:all 0.2s;
+  font-family:'Plus Jakarta Sans',sans-serif;
+}
+.f-btn:hover,.f-btn.active{background:var(--dark);color:white;border-color:var(--dark)}
+.products-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:26px;max-width:1100px;margin:0 auto;
+}
+.p-card{
+  border-radius:22px;overflow:hidden;
+  border:1.5px solid #F0D0C0;background:white;
+  transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;
+}
+.p-card:hover{transform:translateY(-8px);box-shadow:0 22px 50px rgba(0,0,0,0.1)}
+.p-img{
+  height:210px;display:flex;align-items:center;justify-content:center;
+  font-size:70px;position:relative;
+}
+.p-badge{
+  position:absolute;top:14px;left:14px;
+  background:var(--dark);color:white;
+  font-size:10px;font-weight:700;
+  padding:5px 12px;border-radius:100px;letter-spacing:0.06em;
+}
+.p-info{padding:20px 22px 24px}
+.p-name{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:var(--dark);margin-bottom:5px}
+.p-desc{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.55}
+.p-footer{display:flex;align-items:center;justify-content:space-between}
+.p-price{font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:var(--dark)}
+.add-btn{
+  background:var(--dark);color:white;border:none;
+  border-radius:100px;padding:9px 20px;
+  font-size:12px;font-weight:700;cursor:pointer;
+  transition:background 0.2s,transform 0.2s;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  letter-spacing:0.04em;
+}
+.add-btn:hover{background:var(--pink);transform:scale(1.06)}
+
+/* ─── BOOKING ─── */
+.booking-section{
+  background:linear-gradient(135deg,#1C1014 0%,#2D1025 100%);
+  color:white;text-align:center;
+  position:relative;overflow:hidden;
+}
+.bk-bg-text{
+  position:absolute;
+  font-family:'Fraunces',serif;font-size:280px;font-weight:900;
+  opacity:0.035;color:white;pointer-events:none;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  white-space:nowrap;user-select:none;
+}
+.bk-inner{position:relative;z-index:2;max-width:640px;margin:0 auto}
+.bk-inner .eyebrow{color:#A08090}
+.bk-inner h2.stitle{color:white}
+.bk-inner h2.stitle em{color:var(--peach)}
+.bk-inner p{font-size:17px;color:#C8A8B8;line-height:1.7;margin:22px 0 44px}
+.bk-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:22px;max-width:1100px;margin:64px auto 0;
+  text-align:left;
+}
+.bk-card{
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.13);
+  border-radius:22px;padding:32px 26px;
+  transition:background 0.25s;
+}
+.bk-card:hover{background:rgba(255,255,255,0.11)}
+.bk-icon{font-size:36px;margin-bottom:16px;display:block}
+.bk-card h4{
+  font-family:'Fraunces',serif;font-size:20px;font-weight:700;
+  color:white;margin-bottom:8px;
+}
+.bk-card p{font-size:13px;color:#C8A8B8;line-height:1.6;margin-bottom:18px}
+.bk-price{font-family:'Fraunces',serif;font-size:24px;font-weight:900;color:var(--peach)}
+
+/* ─── REVIEWS ─── */
+.reviews-section{background:var(--cream)}
+.reviews-head{text-align:center;margin-bottom:60px}
+.reviews-outer{overflow:hidden}
+.reviews-track{
+  display:flex;gap:22px;width:max-content;
+  animation:reviewsScroll 28s linear infinite;
+}
+.reviews-track:hover{animation-play-state:paused}
+@keyframes reviewsScroll{to{transform:translateX(calc(-50% - 11px))}}
+.rv-card{
+  background:white;border:1.5px solid #F0D0C0;
+  border-radius:22px;padding:30px;width:330px;flex-shrink:0;
+}
+.rv-stars{color:var(--blush);font-size:16px;margin-bottom:14px;letter-spacing:3px}
+.rv-text{
+  font-size:14px;color:var(--muted);line-height:1.7;
+  margin-bottom:18px;font-style:italic;
+}
+.rv-author{display:flex;align-items:center;gap:12px}
+.rv-avatar{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-size:14px;font-weight:900;
+  color:var(--dark);flex-shrink:0;
+}
+.rv-name{font-size:13px;font-weight:700;color:var(--dark)}
+.rv-type{font-size:11px;color:var(--muted);margin-top:1px}
+
+/* ─── EXTENSIONS ─── */
+.ext-section{background:white}
+.ext-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:70px;align-items:center;max-width:1100px;margin:0 auto;
+}
+.ext-text p{font-size:16px;color:var(--muted);line-height:1.75;margin:22px 0 38px}
+.ext-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ex-card{
+  border-radius:22px;padding:32px 24px;text-align:center;
+  transition:transform 0.3s;
+}
+.ex-card:hover{transform:scale(1.05)}
+.ex-icon{font-size:52px;margin-bottom:14px;display:block}
+.ex-card h4{
+  font-family:'Fraunces',serif;font-size:19px;font-weight:700;
+  color:var(--dark);margin-bottom:7px;
+}
+.ex-card p{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* ─── NEWSLETTER ─── */
+.nl-section{
+  background:var(--blush);text-align:center;
+  padding:90px 60px;
+}
+.nl-section h2{
+  font-family:'Fraunces',serif;font-size:clamp(34px,5vw,50px);
+  font-weight:900;color:var(--dark);margin-bottom:12px;letter-spacing:-0.02em;
+}
+.nl-section h2 em{font-style:italic;color:var(--dark)}
+.nl-section p{font-size:16px;color:var(--muted);margin-bottom:38px}
+.nl-form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.nl-input{
+  padding:15px 26px;border-radius:100px;
+  border:2px solid white;font-size:15px;width:320px;
+  font-family:'Plus Jakarta Sans',sans-serif;outline:none;
+  background:white;color:var(--dark);
+}
+.nl-input:focus{border-color:var(--dark)}
+.nl-btn{
+  background:var(--dark);color:white;
+  padding:15px 32px;border-radius:100px;border:none;
+  font-size:15px;font-weight:700;cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  transition:transform 0.2s,background 0.2s;
+  letter-spacing:0.04em;
+}
+.nl-btn:hover{transform:scale(1.05);background:var(--text)}
+
+/* ─── FOOTER ─── */
+footer{background:var(--dark);color:white;padding:72px 60px 40px}
+.footer-top{
+  display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;
+  gap:56px;margin-bottom:56px;
+}
+.f-logo{
+  font-family:'Fraunces',serif;font-size:28px;font-weight:900;
+  color:white;margin-bottom:16px;display:block;
+}
+.f-logo span{color:var(--blush)}
+.f-tagline{font-size:14px;color:#A08090;line-height:1.7;max-width:270px}
+.f-col h5{
+  font-size:11px;font-weight:700;letter-spacing:0.18em;
+  text-transform:uppercase;color:#A08090;margin-bottom:20px;
+}
+.f-col a{
+  display:block;color:#D0B0C0;font-size:14px;
+  text-decoration:none;margin-bottom:11px;
+  transition:color 0.2s;
+}
+.f-col a:hover{color:white}
+.footer-btm{
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding-top:28px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:14px;
+}
+.f-copy{font-size:12px;color:#6A4A5A}
+.f-socials{display:flex;gap:12px}
+.f-soc{
+  background:rgba(255,255,255,0.09);border-radius:100px;
+  padding:8px 18px;font-size:12px;font-weight:600;color:#D0B0C0;
+  text-decoration:none;transition:background 0.2s,color 0.2s;
+}
+.f-soc:hover{background:rgba(255,255,255,0.18);color:white}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  nav{padding:14px 24px}
+  .nav-links{display:none}
+  section{padding:80px 24px}
+  .hero{padding:100px 24px 60px}
+  .about-grid,.ext-grid{grid-template-columns:1fr;gap:48px}
+  .about-visual{height:320px}
+  .bk-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:36px}
+}
+@media(max-width:560px){
+  .footer-top{grid-template-columns:1fr}
+  .ext-cards{grid-template-columns:1fr}
+  .nl-input{width:100%;max-width:320px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">Coilab<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#extensions">Extensions</a></li>
+    <li><a href="#booking">Book</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Book Now ✦</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-curl">🌀</div>
+  <div class="hero-bg-curl">✿</div>
+  <div class="hero-bg-curl">〰</div>
+  <div class="hero-bg-curl">❋</div>
+
+  <div class="blob-float" style="position:absolute;top:20%;left:5%">
+    <div class="blob blob-a">🧴</div>
+  </div>
+  <div class="blob-float" style="position:absolute;top:55%;right:4%">
+    <div class="blob blob-b">✂️</div>
+  </div>
+  <div class="blob-float" style="position:absolute;bottom:12%;left:18%">
+    <div class="blob blob-c">💆</div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Curl Approved · All Textures Welcome
+    </div>
+
+    <h1 class="hero-title">
+      <span class="w1">Your best</span>
+      <span class="w2">hair era</span>
+      <span class="w3">starts here.</span>
+    </h1>
+
+    <p class="hero-sub">Products, extensions, salon services & more — built for every curl, coil, wave, and strand. Because your hair deserves the whole lab.</p>
+
+    <div class="hero-btns">
+      <a href="#shop" class="btn-primary">Shop the Lab ✦</a>
+      <a href="#booking" class="btn-secondary">Book a Service →</a>
+    </div>
+
+    <div class="hair-types">
+      <div class="hair-pill"><div class="hair-swatch" style="background:#2C1503"></div>Type 4C</div>
+      <div class="hair-pill"><div class="hair-swatch" style="background:#6B3A1F"></div>Type 4A / 4B</div>
+      <div class="hair-pill"><div class="hair-swatch" style="background:#A0522D"></div>Type 3C</div>
+      <div class="hair-pill"><div class="hair-swatch" style="background:#C68642"></div>Type 3A / 3B</div>
+      <div class="hair-pill"><div class="hair-swatch" style="background:#F5C89E"></div>Type 2</div>
+      <div class="hair-pill"><div class="hair-swatch" style="background:#E8D5B7"></div>Relaxed</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-band">
+  <div class="marquee-track" id="marquee">
+    <span class="m-item"><span class="m-star">✦</span> Products for Every Texture</span>
+    <span class="m-item"><span class="m-star">✦</span> Salon Services</span>
+    <span class="m-item"><span class="m-star">✦</span> Premium Extensions</span>
+    <span class="m-item"><span class="m-star">✦</span> Natural Hair Care</span>
+    <span class="m-item"><span class="m-star">✦</span> Curl Science</span>
+    <span class="m-item"><span class="m-star">✦</span> Color & Style</span>
+    <span class="m-item"><span class="m-star">✦</span> Wig Installation</span>
+    <span class="m-item"><span class="m-star">✦</span> Scalp Treatments</span>
+    <span class="m-item"><span class="m-star">✦</span> Products for Every Texture</span>
+    <span class="m-item"><span class="m-star">✦</span> Salon Services</span>
+    <span class="m-item"><span class="m-star">✦</span> Premium Extensions</span>
+    <span class="m-item"><span class="m-star">✦</span> Natural Hair Care</span>
+    <span class="m-item"><span class="m-star">✦</span> Curl Science</span>
+    <span class="m-item"><span class="m-star">✦</span> Color & Style</span>
+    <span class="m-item"><span class="m-star">✦</span> Wig Installation</span>
+    <span class="m-item"><span class="m-star">✦</span> Scalp Treatments</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-blob">🧖‍♀️</div>
+      <div class="stat-chip chip-top">
+        <div class="chip-num">2K+</div>
+        <div class="chip-lbl">Happy clients</div>
+      </div>
+      <div class="stat-chip chip-btm">
+        <div class="chip-num">50+</div>
+        <div class="chip-lbl">Hair products</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <p class="eyebrow">About Coilab</p>
+      <h2 class="stitle">We built the lab <em>for you.</em></h2>
+      <p>Coilab Beauty started with one simple truth: most beauty spaces weren't built for us. We changed that. From the shelves to the salon chair, everything here is formulated, curated, and designed for textured hair — in all its beautiful, coily, wavy, relaxed glory.</p>
+      <p>We're part product line, part salon, part hair community. Come for a wash-and-go routine. Stay for the scalp massage. Leave feeling like yourself — but better.</p>
+      <div class="about-pills">
+        <span class="a-pill">✓ Sulfate-free formulas</span>
+        <span class="a-pill">✓ Curl-certified stylists</span>
+        <span class="a-pill">✓ All textures served</span>
+        <span class="a-pill">✓ Clean ingredients</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-head">
+    <p class="eyebrow">What We Offer</p>
+    <h2 class="stitle">The full <em>Coilab</em> experience.</h2>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card sc1">
+      <span class="svc-icon">🧴</span>
+      <span class="svc-tag">Shop Now</span>
+      <h3>Hair Products</h3>
+      <p>Shampoos, conditioners, oils, creams, and curl definers. All clean. All made for your texture.</p>
+    </div>
+    <div class="svc-card sc2">
+      <span class="svc-icon">✂️</span>
+      <span class="svc-tag">Book Today</span>
+      <h3>Salon Services</h3>
+      <p>Cuts, color, treatments, blowouts, and natural styling. By appointment. By curl-certified stylists only.</p>
+    </div>
+    <div class="svc-card sc3">
+      <span class="svc-icon">👑</span>
+      <span class="svc-tag">Premium</span>
+      <h3>Hair Extensions</h3>
+      <p>Clip-ins, bundles, wigs, and frontals. 100% human hair. Sourced ethically. Installed beautifully.</p>
+    </div>
+    <div class="svc-card sc4">
+      <span class="svc-icon">🌿</span>
+      <span class="svc-tag">New</span>
+      <h3>Scalp Care</h3>
+      <p>Scalp facials, moisture treatments, and growth serums. Because healthy hair starts at the root.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section class="shop-section" id="shop">
+  <div class="shop-head">
+    <p class="eyebrow">The Lab Collection</p>
+    <h2 class="stitle">Built different. <em>By design.</em></h2>
+  </div>
+  <div class="filter-row">
+    <button class="f-btn active" onclick="filterProducts(this,'all')">All Products</button>
+    <button class="f-btn" onclick="filterProducts(this,'cleanse')">Cleanse</button>
+    <button class="f-btn" onclick="filterProducts(this,'style')">Style</button>
+    <button class="f-btn" onclick="filterProducts(this,'treat')">Treat</button>
+    <button class="f-btn" onclick="filterProducts(this,'ext')">Extensions</button>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-section" id="booking">
+  <div class="bk-bg-text">COILAB</div>
+  <div class="bk-inner">
+    <p class="eyebrow">The Salon</p>
+    <h2 class="stitle">Come sit in <em>our chair.</em></h2>
+    <p>Our curl-certified stylists are ready for you. Whether you're doing a big chop, adding length, or just treating your scalp — we've got the appointment for that.</p>
+    <a href="#" class="btn-primary" style="display:inline-flex">Book Your Appointment ✦</a>
+  </div>
+  <div class="bk-grid">
+    <div class="bk-card">
+      <span class="bk-icon">✂️</span>
+      <h4>Natural Cut & Style</h4>
+      <p>Wash, condition, detangle, cut, and style. All texture types. Every strand treated with care.</p>
+      <div class="bk-price">From $65</div>
+    </div>
+    <div class="bk-card">
+      <span class="bk-icon">🎨</span>
+      <h4>Color & Treatment</h4>
+      <p>Balayage, highlights, toning, deep conditioning, and protein treatments.</p>
+      <div class="bk-price">From $120</div>
+    </div>
+    <div class="bk-card">
+      <span class="bk-icon">👑</span>
+      <h4>Wig & Extension Install</h4>
+      <p>Lace front install, bundle sew-in, U-part wig, or clip-in application. Supply your own or use ours.</p>
+      <div class="bk-price">From $95</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <div class="reviews-head">
+    <p class="eyebrow">Real People, Real Results</p>
+    <h2 class="stitle">The lab <em>works.</em></h2>
+  </div>
+  <div class="reviews-outer">
+    <div class="reviews-track" id="reviewsTrack"></div>
+  </div>
+</section>
+
+<!-- EXTENSIONS -->
+<section class="ext-section" id="extensions">
+  <div class="ext-grid">
+    <div class="ext-text">
+      <p class="eyebrow">Extensions & Wigs</p>
+      <h2 class="stitle">Length. Volume. <em>Magic.</em></h2>
+      <p>100% human hair, ethically sourced. Our extensions are matched to your texture so they blend like they grew from your scalp. Clip-ins for the weekend. Bundles for the look. Wigs for everything else.</p>
+      <a href="#shop" class="btn-primary">Shop Extensions ✦</a>
+    </div>
+    <div class="ext-cards">
+      <div class="ex-card" style="background:linear-gradient(135deg,#FFF3A0,#FFE0A0)">
+        <span class="ex-icon">💫</span>
+        <h4>Clip-Ins</h4>
+        <p>Easy, daily volume boost. 16" to 24".</p>
+      </div>
+      <div class="ex-card" style="background:linear-gradient(135deg,#FFE4EC,#FFCBA4)">
+        <span class="ex-icon">👑</span>
+        <h4>Bundles</h4>
+        <p>Full-head sew-in sets. Straight, wavy, curly.</p>
+      </div>
+      <div class="ex-card" style="background:linear-gradient(135deg,#D6F5E8,#B8E4FF)">
+        <span class="ex-icon">✨</span>
+        <h4>Lace Wigs</h4>
+        <p>HD lace frontals and full wigs. Pre-plucked.</p>
+      </div>
+      <div class="ex-card" style="background:linear-gradient(135deg,#F5E8FF,#E0D0FF)">
+        <span class="ex-icon">🌿</span>
+        <h4>Closures</h4>
+        <p>4×4 and 5×5 lace closures for a natural part.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="nl-section">
+  <h2>Get the <em>good stuff</em> first.</h2>
+  <p>New drops, salon tips, exclusive discounts. In your inbox. Not your spam folder.</p>
+  <div class="nl-form">
+    <input class="nl-input" type="email" placeholder="your@email.com">
+    <button class="nl-btn" onclick="handleEmail(this)">Join the Lab ✦</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <span class="f-logo">Coilab<span>.</span></span>
+      <p class="f-tagline">Products, salon services, and extensions built for every texture. All curl types welcome. Always.</p>
+    </div>
+    <div class="f-col">
+      <h5>Shop</h5>
+      <a href="#">Cleanse</a>
+      <a href="#">Style</a>
+      <a href="#">Treat</a>
+      <a href="#">Extensions</a>
+      <a href="#">Bundles</a>
+    </div>
+    <div class="f-col">
+      <h5>Salon</h5>
+      <a href="#">Book Online</a>
+      <a href="#">Services Menu</a>
+      <a href="#">Our Stylists</a>
+      <a href="#">Gift Cards</a>
+    </div>
+    <div class="f-col">
+      <h5>Company</h5>
+      <a href="#">About</a>
+      <a href="#">Blog</a>
+      <a href="#">Careers</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+  <div class="footer-btm">
+    <span class="f-copy">© 2025 Coilab Beauty. All rights reserved.</span>
+    <div class="f-socials">
+      <a href="#" class="f-soc">Instagram</a>
+      <a href="#" class="f-soc">TikTok</a>
+      <a href="#" class="f-soc">Pinterest</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const PRODUCTS = [
+  {name:"Curl Defining Cream",desc:"Defines coils, fights frizz, all-day hold.",price:"$24",emoji:"🌀",bg:"linear-gradient(135deg,#FFE4EC,#FFCBA4)",badge:"Best Seller",cat:"style"},
+  {name:"Deep Moisture Mask",desc:"24-hr hydration. Protein-free. Works instantly.",price:"$28",emoji:"💧",bg:"linear-gradient(135deg,#D6F5E8,#A8E6CF)",badge:"New",cat:"treat"},
+  {name:"Scalp Cleansing Shampoo",desc:"Removes buildup. Sulfate-free. Refreshing tingle.",price:"$22",emoji:"✨",bg:"linear-gradient(135deg,#E8EFFF,#B8D8FF)",badge:null,cat:"cleanse"},
+  {name:"Growth Serum Oil",desc:"Rosemary, castor & biotin blend. Promotes growth.",price:"$36",emoji:"🌿",bg:"linear-gradient(135deg,#FFF3A0,#D6F5E8)",badge:"Fan Fav",cat:"treat"},
+  {name:"Leave-In Conditioner",desc:"Detangles, moisturizes, soft hold for all textures.",price:"$26",emoji:"🍃",bg:"linear-gradient(135deg,#F5E8FF,#DDB8F0)",badge:null,cat:"cleanse"},
+  {name:"Edge Control Gel",desc:"24-hr hold. Non-flaky. Sleek or natural edges.",price:"$18",emoji:"💅",bg:"linear-gradient(135deg,#FFE4EC,#F5E8FF)",badge:"New",cat:"style"},
+  {name:"Clip-In Extension Set",desc:"Silky 20\" clip-ins in 8 shades. Human hair.",price:"$89",emoji:"👑",bg:"linear-gradient(135deg,#FFF3A0,#FFCBA4)",badge:"Limited",cat:"ext"},
+  {name:"Clarifying Shampoo",desc:"Monthly reset. Removes buildup. Scalp refresh.",price:"$24",emoji:"🫧",bg:"linear-gradient(135deg,#D6F5E8,#E8F0FF)",badge:null,cat:"cleanse"},
+];
+
+function renderProducts(filter='all'){
+  const grid = document.getElementById('productsGrid');
+  const list = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === filter);
+  grid.innerHTML = list.map(p => `
+    <div class="p-card">
+      <div class="p-img" style="background:${p.bg}">
+        <span style="font-size:70px">${p.emoji}</span>
+        ${p.badge ? `<div class="p-badge">${p.badge}</div>` : ''}
+      </div>
+      <div class="p-info">
+        <div class="p-name">${p.name}</div>
+        <div class="p-desc">${p.desc}</div>
+        <div class="p-footer">
+          <div class="p-price">${p.price}</div>
+          <button class="add-btn" onclick="addToCart(this)">Add to bag</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterProducts(btn, cat){
+  document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts(cat);
+}
+
+function addToCart(btn){
+  const orig = btn.textContent;
+  btn.textContent = '✓ Added!';
+  btn.style.background = '#2AA08A';
+  setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 1800);
+}
+
+const REVIEWS = [
+  {text:"I've been natural for 6 years and Coilab's curl cream is the only thing that defines my 4C coils without making them crunchy. Obsessed.",name:"Aisha M.",type:"Type 4C Curl",color:"#C49BCB"},
+  {text:"My stylist at Coilab did my first big chop and I cried happy tears. She knew exactly what to do. I'll never go anywhere else.",name:"Tamara J.",type:"Salon Client",color:"#F7A8C4"},
+  {text:"The lace wig install was flawless. Three installs done here and every time people ask if it's my real hair.",name:"Renee K.",type:"Extension Client",color:"#A8E6CF"},
+  {text:"The deep moisture mask literally saved my 3B curls after a bad bleach job. My hair is back to life in 3 uses. Not kidding.",name:"Destiny T.",type:"Type 3B Curl",color:"#B8E4FF"},
+  {text:"I love that Coilab actually caters to ALL textures, not just loose curls. My 4B hair is never an afterthought here.",name:"Priya W.",type:"Type 4B Curl",color:"#FFCBA4"},
+  {text:"Best scalp facial I've ever had. My scalp feels clean and my curls just fell differently after. Game changer.",name:"Leila D.",type:"Scalp Treatment",color:"#FFF3A0"},
+];
+
+function buildReviews(){
+  const track = document.getElementById('reviewsTrack');
+  const doubled = [...REVIEWS, ...REVIEWS];
+  track.innerHTML = doubled.map(r => `
+    <div class="rv-card">
+      <div class="rv-stars">★★★★★</div>
+      <div class="rv-text">"${r.text}"</div>
+      <div class="rv-author">
+        <div class="rv-avatar" style="background:${r.color}">${r.name.split(' ').map(x=>x[0]).join('')}</div>
+        <div>
+          <div class="rv-name">${r.name}</div>
+          <div class="rv-type">${r.type}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function handleEmail(btn){
+  const input = btn.previousElementSibling;
+  if(input.value && input.value.includes('@')){
+    btn.textContent = '✓ You\'re in!';
+    btn.style.background = '#2AA08A';
+    input.value = '';
+    setTimeout(() => { btn.textContent = 'Join the Lab ✦'; btn.style.background = ''; }, 2500);
+  } else {
+    input.style.borderColor = '#D4608A';
+    input.placeholder = 'Enter a valid email';
+    setTimeout(() => { input.style.borderColor = ''; input.placeholder = 'your@email.com'; }, 2000);
+  }
+}
+
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.style.boxShadow = window.scrollY > 40 ? '0 4px 20px rgba(0,0,0,0.08)' : 'none';
+});
+
+renderProducts();
+buildReviews();
+</script>
+</body>
+</html>
